@@ -39,7 +39,10 @@ As a brief summary of my findings:
 - For Question 2, the comparison of baseline Decision Tree models to Random Forests ones showed that in all 3 types of offers the Random Forest has better results.
 
 ### 3. File Descriptions
-This repository contains data files plus the solution notebook. Additional files were added to the repo with the description of the project.
+This repository contains data files plus the solution notebook. 
+Additional files were added to the repo with the description of the project.
+
+There is also a blog article file available [Blog Article](https://github.com/MarcinTom/udacity_data_science_nano_capstone/blob/96c6458a8a4406aa3fab63d18a29d2aa6fc3f124/Blog%20article.md)
 
 ### 4. Licensing, Authors, Acknowledgements, etc.
 
