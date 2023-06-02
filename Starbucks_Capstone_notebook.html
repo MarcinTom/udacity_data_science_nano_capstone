@@ -15844,7 +15844,7 @@ class="
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Lets now focus on the <code>become_member_on</code> column. First lets apply proper date formating plus calculate <code>membershiop_time</code> to verify the longest Starbucks loyality club customers</p>
+<p>Lets now focus on the <code>become_member_on</code> column. First lets apply proper date formatting plus calculate <code>membership_time</code> to verify the longest Starbucks loyalty club customers</p>
 
 </div>
 </div>
@@ -16050,7 +16050,7 @@ class="
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>As you can see the number of customers joining the program icreased over time up to <code>2018</code> where first, significant drop was visible. There are also two significant spikes in <code>2015Q2</code> and <code>2017Q1</code></p>
+<p>As you can see the number of customers joining the program increased over time up to <code>2018</code> where first, significant drop was visible. There are also two significant spikes in <code>2015Q2</code> and <code>2017Q1</code></p>
 
 </div>
 </div>
@@ -16287,8 +16287,8 @@ class="
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>The age distribution looks more or less similar between genders. Though there is slight difference in similarity in case of male users, where a significant group of users close to 20 years old is visible. The other two genders have closer to  normal distriburion.
-Interestignly in terms of income there is a visible right skewed shape on male's graph. Femal one looks closer to normal distribution. It seems that men using the app do in general earn less.</p>
+<p>The age distribution looks more or less similar between genders. Though there is slight difference in similarity in case of male users, where a significant group of users close to 20 years old is visible. The other two genders have closer to  normal distribution.
+Interestingly in terms of income there is a visible right skewed shape on male's graph. Female one looks closer to normal distribution. It seems that men using the app do in general earn less.</p>
 
 </div>
 </div>
@@ -17089,7 +17089,7 @@ Both the <code>portfolio</code> and <code>transcript</code> dataframes contain s
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Before going to data modelling I need to rethink the way I will separate effective offer from ineffective one. That data will be then used to identify main drivers of the succesful offers.</p>
+<p>Before going to data modelling I need to rethink the way I will separate effective offer from ineffective one. That data will be then used to identify main drivers of the successful offers.</p>
 
 </div>
 </div>
@@ -17101,7 +17101,7 @@ Both the <code>portfolio</code> and <code>transcript</code> dataframes contain s
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>As shown in the data there are 4 types of events: <code>offer completed</code>, <code>offer received</code>, <code>offer view</code>, and <code>transaction</code>. However there is not data showing us the transactions itself, therefore we need to establish the metohodology that will allow as to identify the offers that ended with success and the ones that did not.</p>
+<p>As shown in the data there are 4 types of events: <code>offer completed</code>, <code>offer received</code>, <code>offer view</code>, and <code>transaction</code>. However there is not data showing us the transactions itself, therefore we need to establish the methodology that will allow as to identify the offers that ended with success and the ones that did not.</p>
 
 </div>
 </div>
@@ -17942,10 +17942,10 @@ class="
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Lets now flag all the transactions that ended successfully. As we already identified the right <code>offer_id</code> for transactions we just need to make sure that a right sequence of <code>events</code>before the transaction occured. This will lead us to focus mostly on <code>Group 1</code> of people who where succesfully influenced by the offer. <code>success==1</code></p>
-<p><code>Group 2</code> of people would therefore gor the the ineffective offer area <code>success==0</code></p>
-<p>What should we do with the people from <code>Group 3 and 4</code>? From business perspective they are not important. <code>Group 3</code> people do the transactions regardles receiving any offers. <code>Group 4</code> do not even view them or make transactions. So these are not groups we should target when sending the offers at all. So we will exclude them in the further part before data modelling.</p>
-<p>To identify successful offers we need to make sure that the <code>offer_id</code> of transaction is the same as <code>offer_id</code> of previous event. Then if we have right sequence of events with the same <code>offer_id</code>, this will be a confirmation of the succesfull offer.</p>
+<p>Lets now flag all the transactions that ended successfully. As we already identified the right <code>offer_id</code> for transactions we just need to make sure that a right sequence of <code>events</code>before the transaction occurred. This will lead us to focus mostly on <code>Group 1</code> of people who where successfully influenced by the offer. <code>success==1</code></p>
+<p><code>Group 2</code> of people would therefore go to the the ineffective offer area <code>success==0</code></p>
+<p>What should we do with the people from <code>Group 3 and 4</code>? From business perspective they are not important. <code>Group 3</code> people do the transactions regardless receiving any offers. <code>Group 4</code> do not even view them or make transactions. So these are not groups we should target when sending the offers at all. So we will exclude them in the further part before data modelling.</p>
+<p>To identify successful offers we need to make sure that the <code>offer_id</code> of transaction is the same as <code>offer_id</code> of previous event. Then if we have right sequence of events with the same <code>offer_id</code>, this will be a confirmation of the successful offer.</p>
 <p>To achieve this I will create new column with <code>prev_offer_id</code> using <code>shift</code> pandas function.</p>
 
 </div>
@@ -18278,8 +18278,8 @@ class="
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Based on the current data we can identify people from <code>Group 1</code> and all the <code>offer_ids</code> with <code>success==1</code> for each dataset (effective offers). We have to remember that for <code>BOGO</code> and <code>discount</code> offers the effective offer is the one ended with <code>offer completed event</code>. For <code>informationl</code> offers this will be <code>transaction</code> event respectively.</p>
-<p>Now we can extract the <code>Group 1</code> people from <code>BOGO</code> and <code>discount</code> datasets. For <code>informational</code> dataset additional condition has to be taken into consideration. The transactions have to aoccure withon the validity period of an offer to recognise this as effective offer.</p>
+<p>Based on the current data we can identify people from <code>Group 1</code> and all the <code>offer_ids</code> with <code>success==1</code> for each datasets (effective offers). We have to remember that for <code>BOGO</code> and <code>discount</code> offers the effective offer is the one ended with <code>offer completed event</code>. For <code>informational</code> offers this will be <code>transaction</code> event respectively.</p>
+<p>Now we can extract the <code>Group 1</code> people from <code>BOGO</code> and <code>discount</code> datasets. For <code>informational</code> dataset additional condition has to be taken into consideration. The transactions have to occurred within the validity period of an offer to recognize this as effective offer.</p>
 
 </div>
 </div>
@@ -20200,7 +20200,7 @@ C:\Users\Komp\AppData\Local\Temp\ipykernel_5248\3886140977.py:12: FutureWarning:
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>As we have 3 dataframes there will be a 3 separate models created to forcast the target feature which is <code>offer_responded</code>. The modelling will be supervised binary classification. I will create a simple decision tree classifier and use it as a benchmark to enhanced model. Before we proceed let's check if the datasets are balaced</p>
+<p>As there are 3 data frames I will create 3 separate models to forecast the target feature which is <code>offer_responded</code>. The models will be supervised binary classification ones. I will create a simple decision tree classifier and use it as a benchmark to enhanced model. Before modelling I checked if the datasets are balanced.</p>
 
 </div>
 </div>
@@ -20275,7 +20275,7 @@ offer_responded
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>There is a visible difference between classes in all three datasets, therefore we can use F1 score as an evaluation metric. It provides better performance measurment in such situations. F1 score gives more weightage to true positive and hence for the Starbucks app here, it would be fine as we would prioritise more on whether offers are effective, and less focus on why offers are ineffective.</p>
+<p>There is a visible difference between classes in all three datasets, therefore we can use F1 score as an evaluation metric. It provides better performance measurement in such situations. F1 score gives more weight to true positive and hence for the Starbucks app here, it would be fine as we would priorities more on whether offers are effective, and less focus on why offers are ineffective.</p>
 
 </div>
 </div>
@@ -20287,7 +20287,7 @@ offer_responded
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>As we will apply same data preparation steps to all 3 dataframes I will prepare functions to do so. We need to separate target variable from other features, drop columns that will be not needed during modelling. Afterwards split the data to train and test. As mentioned during the data analysis some of the features are on a different scale therefore scalin g will be also required.</p>
+<p>As we will apply same data preparation steps to all 3 data frames I will prepare functions to do so. We need to separate target variable from other features, drop columns that will be not needed during modelling. Afterwards split the data to train and test. As mentioned during the data analysis some of the features are on a different scale therefore scaling will be also required.</p>
 
 </div>
 </div>
