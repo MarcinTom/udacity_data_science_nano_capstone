@@ -71,7 +71,7 @@ I performed a further distribution analysis to gather more information about the
 
 ![income_dist](./project_images/gender_dist_inc.png)
 
-![membership_dist](./project_images/gender_dist_importance.png)
+![membership_dist](./project_images/gender_dist_membership.png)
 
 The age distribution looks more or less similar between genders. Though there is slight difference in similarity in case of male users, where a significant group of users close to 20 years old is visible. The other two genders have closer to  normal distribution.
 Interestingly in terms of income there is a visible right skewed shape on male's graph. Female one looks closer to normal distribution. It seems that men using the app do in general earn less.
