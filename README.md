@@ -15,9 +15,9 @@ This project was written in Python, using Jupyter Notebook on Anaconda. The rele
 - seabron
 - time
 - datetime
-- sklearn.model_selection (train_test_split)
+- sklearn.model_selection (train_test_split, GridSearchCV)
 - sklearn.preprocessing (StandardScaler)
-- from sklearn.tree (DecisionTreeClassifier)
+- sklearn.tree (DecisionTreeClassifier)
 - sklearn.ensemble (RandomForestClassifier)
 - sklearn.metrics (classification_report, f1_score)
 
