@@ -5,10 +5,16 @@ This is a blog  summary to present my finding for the Starbuck's Capstone Projec
 All the details of the project are available here [GitHub repository](https://github.com/MarcinTom/udacity_data_science_nano_capstone.git) 
 The code and the analysis is available here [Jupyter Notebook](https://github.com/MarcinTom/udacity_data_science_nano_capstone/blob/8a0cdd28e4f1b6d1468952b7f40b1af9e618b81c/Starbucks_Capstone_notebook.ipynb)
 
-## Problem Statement
+## Problem Introduction
 During the project I focused on answering the below two questions:
 1. What are the main drivers of an effective offer on the Starbucks app?
 2. Out of the compared models (Decision Tree and Random Forest) which one is better in predicting the correct classifications
+
+## Strategy to solve the problem
+The above problem statements can be resolved with the binary classification modelling. Additionally I will use GridSearch for the hyper parameters tunning.
+
+## Metrics
+As discovered in the further data analysis and modelling the target classes in training sample will be slightly unbalanced. Therefore I will use F1 score as an evaluation metric. It provides better performance measurement in such situations. F1 score gives more weight to true positive and hence for the Starbucks app here, it would be fine as we would priorities more on whether offers are effective, and less focus on why offers are ineffective.
 
 ## Data
 The dataset is contained in three files:
@@ -33,7 +39,8 @@ The dataset is contained in three files:
 - time (int) - time in hours since start of test. The data begins at time t=0
 - value - (dict of strings) - either an offer id or transaction amount depending on the record
 
-## Data exploration and analysis
+## EDA
+
 I started my analysis with the portfolio dataframe. It has no missing values. Based on id column we can confirm that there are 10 unique offers in dataframe. 
 
 The 3 types of offers are:
@@ -141,7 +148,7 @@ The `Group 1` people from `BOGO` and `discount` datasets can be prepared based o
 
 The above allowed me to prepare the right dataframe to start modelling. I decide to split it into 3 separate datasets based on `offer_type` to get  better suited models.
 
-## Data modelling
+## Modelling
 As there are 3 data frames I will create 3 separate models to forecast the target feature which is `offer_responded`. The models will be supervised binary classification ones. I will create a simple decision tree classifier and use it as a benchmark to enhanced model. Before modelling I checked if the datasets are balanced.
 
 ```
@@ -339,17 +346,103 @@ For the feature importance in all 3 types of offers we had similar results point
 
 ![info_importance](./project_images/info_feature_importance.png)
 
-### Project conclusions
+## Hyperparameter tuning
+For all three types of offers I applied hyperparameter tunning for the Random Forest models. In all three cases the training sample F1 score was lower than in the original Random Forest models but in the same time it was much closer to the testing sample score which was higher than in the original model case. This proves that the model after tunning is more stable and less prone to be overfitted.
 
-The goal of the project was to predict customer positive response on the Starbucks offer based on all available information. I created a simple classification model using Decision Tree classifier. Then compared it to the results of the Random Forest performance. The latter was better in all all 3 types of offers. I also verified the feature importance to check which variables do influence the target variable in most significant way.
+Random forest BOGO model
+```
+RandomForestClassifier(max_depth=15, min_samples_leaf=10, n_estimators=25,
+                       random_state=42)
+Train sample report
+              precision    recall  f1-score   support
+
+           0     0.8097    0.1838    0.2995      1551
+           1     0.8465    0.9905    0.9129      7049
+
+    accuracy                         0.8450      8600
+   macro avg     0.8281    0.5871    0.6062      8600
+weighted avg     0.8399    0.8450    0.8022      8600
+
+Test sample report
+              precision    recall  f1-score   support
+
+           0     0.5152    0.1073    0.1775       634
+           1     0.8408    0.9790    0.9047      3053
+
+    accuracy                         0.8291      3687
+   macro avg     0.6780    0.5431    0.5411      3687
+weighted avg     0.7848    0.8291    0.7796      3687
+
+Training F1 score:   0.9128587304700267
+Test F1 score:   0.9046610169491526
+```
+
+Random forest Discount model
+```
+RandomForestClassifier(max_depth=5, min_samples_leaf=2, n_estimators=10,
+                       random_state=42)
+Train sample report
+              precision    recall  f1-score   support
+
+           0     1.0000    0.0041    0.0081      1224
+           1     0.8630    1.0000    0.9265      7682
+
+    accuracy                         0.8631      8906
+   macro avg     0.9315    0.5020    0.4673      8906
+weighted avg     0.8819    0.8631    0.8003      8906
+
+Test sample report
+              precision    recall  f1-score   support
+
+           0     0.0000    0.0000    0.0000       497
+           1     0.8698    1.0000    0.9304      3321
+
+    accuracy                         0.8698      3818
+   macro avg     0.4349    0.5000    0.4652      3818
+weighted avg     0.7566    0.8698    0.8093      3818
+
+Training F1 score:   0.926490984743412
+Test F1 score:   0.9303824064995098
+```
+
+Random forest Informational model
+```
+RandomForestClassifier(max_depth=15, min_samples_leaf=10, n_estimators=25,
+                       random_state=42)
+Train sample report
+              precision    recall  f1-score   support
+
+           0     0.7558    0.1513    0.2521      1289
+           1     0.7720    0.9833    0.8649      3768
+
+    accuracy                         0.7712      5057
+   macro avg     0.7639    0.5673    0.5585      5057
+weighted avg     0.7679    0.7712    0.7087      5057
+
+Test sample report
+              precision    recall  f1-score   support
+
+           0     0.5093    0.1030    0.1713       534
+           1     0.7675    0.9676    0.8560      1634
+
+    accuracy                         0.7546      2168
+   macro avg     0.6384    0.5353    0.5137      2168
+weighted avg     0.7039    0.7546    0.6873      2168
+
+Training F1 score:   0.8649468892261001
+Test F1 score:   0.8559826746074715
+```
+
+## Conclusion/Reflection
+
+The goal of the project was to predict customer positive response on the Starbucks offer based on all available information. I created a simple classification model using Decision Tree classifier. Then compared it to the results of the Random Forest performance. The latter was better in all all 3 types of offers. I also verified the feature importance to check which variables do influence the target variable in most significant way. Afterwards I applied hyperparameter tunning to the Random Forest models which resulted in more stable and less overfitted models.
 
 The most relevant factors for offer success based on the model are:
 1. Membership time
 2. Income
 3. Age
 
-
-### Potential future improvement:
+## Improvement:
+For the potential future improvement we can explore below points:
 - Explore other classification models types
-- Apply hyper parameter tuning
 - Add additional variables with feature engineering
