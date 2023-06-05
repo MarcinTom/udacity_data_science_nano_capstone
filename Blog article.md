@@ -1,22 +1,13 @@
-## Project Overview
+## High-level overview
 
-This is a blog  summary to present my finding for the Starbuck's Capstone Project of the Udacity Data Science Nanodegree.  
+This is a blog  summary to present my finding for the Starbuck's Capstone Project of the Udacity Data Science Nanodegree. 
+
+The data set contains simulated data that mimics customer behavior on the Starbucks rewards mobile app. Once every few days, Starbucks sends out an offer to users of the mobile app. An offer can be merely an advertisement for a drink or an actual offer such as a discount or BOGO (buy one get one free). Some users might not receive any offer during certain weeks. 
 
 All the details of the project are available here [GitHub repository](https://github.com/MarcinTom/udacity_data_science_nano_capstone.git) 
 The code and the analysis is available here [Jupyter Notebook](https://github.com/MarcinTom/udacity_data_science_nano_capstone/blob/8a0cdd28e4f1b6d1468952b7f40b1af9e618b81c/Starbucks_Capstone_notebook.ipynb)
 
-## Problem Introduction
-During the project I focused on answering the below two questions:
-1. What are the main drivers of an effective offer on the Starbucks app?
-2. Out of the compared models (Decision Tree and Random Forest) which one is better in predicting the correct classifications
-
-## Strategy to solve the problem
-The above problem statements can be resolved with the binary classification modelling. Additionally I will use GridSearch for the hyper parameters tunning.
-
-## Metrics
-As discovered in the further data analysis and modelling the target classes in training sample will be slightly unbalanced. Therefore I will use F1 score as an evaluation metric. It provides better performance measurement in such situations. F1 score gives more weight to true positive and hence for the Starbucks app here, it would be fine as we would priorities more on whether offers are effective, and less focus on why offers are ineffective.
-
-## Data
+## Description of Input Data
 The dataset is contained in three files:
 1. portfolio.json - containing offer ids and meta data about each offer (duration, type, etc.)
 - id (string) - offer id
@@ -38,6 +29,23 @@ The dataset is contained in three files:
 - person (str) - customer id
 - time (int) - time in hours since start of test. The data begins at time t=0
 - value - (dict of strings) - either an offer id or transaction amount depending on the record
+
+## Problem Introduction
+During the project I focused on answering the below two questions:
+1. What are the main drivers of an effective offer on the Starbucks app?
+2. Out of the compared models (Decision Tree and Random Forest) which one is better in predicting the correct classifications
+
+## Strategy to solve the problem
+The above problem statements can be resolved with the binary classification modelling. Additionally I will use GridSearch for the hyper parameters tunning.
+
+
+## Discussion of the expected solution
+This is a typical classification problem. First we need to establish the way to be able to correctly identify offers that will be effective and separate them from the ineffective ones. We will use binary classification model to achieve that. Afterwards we can verify which variables are the most important in the model and in this way we will be able to verify what are the main drivers of an effective offer.
+
+
+## Metrics with justification
+As discovered in the further data analysis and modelling the target classes in training sample will be slightly unbalanced. Therefore I will use F1 score as an evaluation metric. It provides better performance measurement in such situations. F1 score gives more weight to true positive and hence for the Starbucks app here, it would be fine as we would priorities more on whether offers are effective, and less focus on why offers are ineffective.
+
 
 ## EDA
 
@@ -347,7 +355,17 @@ For the feature importance in all 3 types of offers we had similar results point
 ![info_importance](./project_images/info_feature_importance.png)
 
 ## Hyperparameter tuning
-For all three types of offers I applied hyperparameter tunning for the Random Forest models. In all three cases the training sample F1 score was lower than in the original Random Forest models but in the same time it was much closer to the testing sample score which was higher than in the original model case. This proves that the model after tunning is more stable and less prone to be overfitted.
+For all three types of offers I applied hyperparameter tunning for the Random Forest models. Using GridSearch I applied the below parameters to verify which are the most optimal for all 3 models.
+```
+param_grid={
+                'max_depth' : [5, 10, 15],
+                'n_estimators': [10, 20, 25],
+                'min_samples_split': [2, 10, 15],
+                'min_samples_leaf': [2, 10, 15],
+                }
+```
+
+Looking at the results below we can see that the F1 score improved after applying the tunning.
 
 Random forest BOGO model
 ```
@@ -433,6 +451,14 @@ Training F1 score:   0.8649468892261001
 Test F1 score:   0.8559826746074715
 ```
 
+## Results and comparison table
+Below I present a final comparison of the Random Forest result before and after hyperparameter tunning.
+
+In all three cases the training sample F1 score was lower than in the original Random Forest models but in the same time it was much closer to the testing sample score which was higher than in the original model case. This proves that the model after tunning is more stable and less prone to be overfitted.
+
+![compare_table](./project_images/comparison_table.JPG)
+
+
 ## Conclusion/Reflection
 
 The goal of the project was to predict customer positive response on the Starbucks offer based on all available information. I created a simple classification model using Decision Tree classifier. Then compared it to the results of the Random Forest performance. The latter was better in all all 3 types of offers. I also verified the feature importance to check which variables do influence the target variable in most significant way. Afterwards I applied hyperparameter tunning to the Random Forest models which resulted in more stable and less overfitted models.
@@ -442,7 +468,10 @@ The most relevant factors for offer success based on the model are:
 2. Income
 3. Age
 
-## Improvement:
+## Improvements:
 For the potential future improvement we can explore below points:
 - Explore other classification models types
 - Add additional variables with feature engineering
+
+## Acknowledgment
+Data for coding project was provided by Udacity.
